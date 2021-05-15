@@ -1,16 +1,26 @@
 import { Button } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
+import { auth } from "./../firebase"
 
-function Header({setModalOpen}) {
+function Header({user, setModalOpen, setOpenSignIn}) {
     return (
         <Container>
             <img 
                 src="/images/instagram-logo.png" 
                 alt="instagram logo"
-                />
+            />
 
-            <Button onClick={setModalOpen}> Sign Up </Button>
+            {   
+                user ? 
+                (<Button onClick={() => auth.signOut()}> Logout </Button>) : 
+                (   
+                    <>
+                    <Button onClick={() => setOpenSignIn(true)}> Sign In </Button>
+                    <Button onClick={setModalOpen}> Sign up </Button>
+                    </>
+                )
+            }
         </Container>
     )
 }
