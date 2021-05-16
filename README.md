@@ -4,5 +4,6 @@
 * React
 * Hooks
 * Material UI
+* CSS
 * Firebase authentication
 * Firebase Storage
