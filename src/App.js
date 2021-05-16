@@ -219,7 +219,7 @@ const App = () => {
             : 
             (
               <UploadAreaDiv>
-                Login to upload a photo
+                Login or sign up to upload a photo
               </UploadAreaDiv>
             ) 
         }
@@ -247,7 +247,7 @@ const App = () => {
         
         <Footer>
           <div>
-            Website developed by Shubham Pandey - No commercial purporses intended, made only for showing web development techniques and to be included as a piece of portfolio. All copyrights are owned by Instagram and Facebook, etc.
+            Website developed by Shubham Pandey - Made only for showing web development techniques and to be included as a piece of portfolio.
           </div>
         </Footer>    
       </Container>
