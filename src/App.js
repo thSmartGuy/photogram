@@ -212,7 +212,7 @@ const App = () => {
 
         <UploadArea>
         {
-          user && user.displayName ?
+          user ?
             (
               <ImageUpload username={user.displayName}/>
             )

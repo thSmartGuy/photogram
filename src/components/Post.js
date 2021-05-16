@@ -149,4 +149,8 @@ const Form = styled.form`
 
 const Comments = styled.div`
     padding: 20px;
+
+    p{
+        margin-top:3px;
+    }
 `
