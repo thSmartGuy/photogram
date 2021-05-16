@@ -102,6 +102,8 @@ const Container = styled.div`
     background-color: white;
     border: 1px solid lightgray;
     margin-bottom: 45px;
+    margin-left: 30%;
+    margin-right: 30%;
 
     img {
         width: 100%;
