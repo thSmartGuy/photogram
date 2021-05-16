@@ -2,14 +2,17 @@ import { Button } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
 import { auth } from "../firebase"
+import Logo from './Logo'
 
 function Header({user, setModalOpen, setOpenSignIn}) {
     return (
         <Container>
-            <img 
+            {/* <img 
                 src="/images/instagram-logo.png" 
                 alt="instagram logo"
-            />
+            /> */}
+
+            <Logo />
 
             {   
                 user ? 

@@ -8,6 +8,7 @@ import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Input } from '@material-ui/core';
 import ImageUpload from './components/ImageUpload';
+import Logo from './components/Logo';
 
 function getModalStyle() {
   const top = 50 
@@ -129,10 +130,7 @@ const App = () => {
             <div style={modalStyle} className={classes.paper}>
               <SignUpForm>
                 <center>  
-                  <img 
-                        src="/images/instagram-logo.png" 
-                        alt="instagram logo"
-                        />
+                  <Logo />
                 </center>
 
               <Input 
@@ -179,10 +177,7 @@ const App = () => {
             <div style={modalStyle} className={classes.paper}>
               <SignUpForm>
                 <center>  
-                  <img 
-                        src="/images/instagram-logo.png" 
-                        alt="instagram logo"
-                        />
+                  <Logo />
                 </center>
 
               <Input 
@@ -215,6 +210,21 @@ const App = () => {
 
         <Header user={user} setModalOpen={setModalOpen} setOpenSignIn={setOpenSignIn}/>
 
+        <UploadArea>
+        {
+          user && user.displayName ?
+            (
+              <ImageUpload username={user.displayName}/>
+            )
+            : 
+            (
+              <UploadAreaDiv>
+                Login to upload a photo
+              </UploadAreaDiv>
+            ) 
+        }
+        </UploadArea>
+      
         <Storeys>
           { 
             posts ? (
@@ -234,12 +244,12 @@ const App = () => {
                   )) : (<div>Loading...</div>)    
           }
         </ Storeys>
-
-        {
-          user && user.displayName ?
-            (<ImageUpload username={user.displayName}/>)
-            : (<h3>Sorry, you need to login to upload!</h3>) 
-        }
+        
+        <Footer>
+          <div>
+            Website developed by Shubham Pandey - No commercial purporses intended, made only for showing web development techniques and to be included as a piece of portfolio. All copyrights are owned by Instagram and Facebook, etc.
+          </div>
+        </Footer>    
       </Container>
   );
 }
@@ -258,9 +268,37 @@ const Container = styled.div`
 const Storeys = styled.div`
   padding: 20px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   
   div {
     margin-right: 20px;
   }
+`
+
+const Footer = styled.div`
+  width:100%; 
+  height: 150px;
+  background: lightgray ;
+  box-shadow: 5px 5px 20px #000 ;
+
+  div {
+    text-align: center;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+  }
+`
+
+const UploadArea = styled.div`
+  margin: auto; 
+  width: 60%;
+`
+
+const UploadAreaDiv = styled.div`
+  text-align: center;
+  padding: 10px;
+  box-shadow: 1px 1px 1px lightgray;
+  margin: 5px;
 `

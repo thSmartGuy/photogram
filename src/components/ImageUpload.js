@@ -66,12 +66,14 @@ function ImageUpload(username) {
 
     return (
         <Container>
-            <ProgressBar value={progress} max="100"/>
-            <input type="text" placeholder="Enter a caption..." onChange={(event) => setCaption(event.target.value)} value={caption}/>
-            <input type="file" onChange={handleChange}/>
-            <Button onClick={handleUpload}>
-                Upload
-            </Button>
+            {progress ? (<ProgressBar value={progress} max="100"/>) : (<></>)}
+            <Caption type="text" placeholder="Enter a caption..." onChange={(event) => setCaption(event.target.value)} value={caption}/>
+            <FileAndUpload>
+                <input type="file" onChange={handleChange}/>
+                <Button variant="contained" color="primary" onClick={handleUpload}>
+                    Upload
+                </Button>
+            </FileAndUpload>
         </Container>
     )
 }
@@ -81,13 +83,26 @@ export default ImageUpload
 const Container = styled.div`
     display:flex;
     flex-direction: column;
-    width: 60%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
+    height: 170px;
+    justify-content: space-evenly;
+    box-shadow: 1px 1px 10px lightgray;
+    padding: 15px;
+`
+
+const Caption = styled.input`
+    height: 50px;
 `
 
 const ProgressBar = styled.progress`
     width: 100%;
+`
+
+const FileAndUpload = styled.div`
+    display: flex;
+    justify-content:space-between;
 `

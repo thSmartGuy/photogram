@@ -66,7 +66,7 @@ const Post = ({postId, username, caption, imageUrl, user}) => {
                 {comments && comments.map((comment) => {
                     return (
                         <p>
-                            <strong>{comment.username}</strong>{comment.text}
+                            <strong>{comment.username}</strong> {comment.text}
                         </p>
                     )
                 })}
@@ -102,8 +102,9 @@ const Container = styled.div`
     background-color: white;
     border: 1px solid lightgray;
     margin-bottom: 45px;
-    margin-left: 30%;
-    margin-right: 30%;
+    box-shadow: 5px 5px 10px #000 ;
+    /* margin-left: 30%;
+    margin-right: 30%; */
 
     img {
         width: 100%;
