@@ -5,5 +5,6 @@
 * Hooks
 * Material UI
 * CSS
+* Styled componenets
 * Firebase authentication
 * Firebase Storage
