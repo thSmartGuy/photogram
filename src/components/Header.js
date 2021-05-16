@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
-import { auth } from "./../firebase"
+import { auth } from "../firebase"
 
 function Header({user, setModalOpen, setOpenSignIn}) {
     return (
@@ -15,10 +15,10 @@ function Header({user, setModalOpen, setOpenSignIn}) {
                 user ? 
                 (<Button onClick={() => auth.signOut()}> Logout </Button>) : 
                 (   
-                    <>
-                    <Button onClick={() => setOpenSignIn(true)}> Sign In </Button>
-                    <Button onClick={setModalOpen}> Sign up </Button>
-                    </>
+                    <div>
+                        <Button onClick={() => setOpenSignIn(true)}> Sign In </Button>
+                        <Button onClick={setModalOpen}> Sign up </Button>
+                    </ div>
                 )
             }
         </Container>
@@ -34,4 +34,11 @@ const Container = styled.div`
     object-fit: contain;
     display: flex;
     justify-content: space-between;
+    position: sticky;
+    top:0;
+    z-index:1;
+
+    img {
+        object-fit: contain;
+    }
 `

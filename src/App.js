@@ -75,7 +75,7 @@ const App = () => {
     //       }
     //     ))
     //   }
-      db.collection('posts').onSnapshot(snapshot => {
+      db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
         setPosts(snapshot.docs.map(
           doc => {
             return (
@@ -122,11 +122,6 @@ const App = () => {
       <Container>
         
         {/* {console.log("app__userDisplayName:", user.displayName)} */}
-        {
-          user && user.displayName ?
-            (<ImageUpload username={user.displayName}/>)
-            : (<h3>Sorry, you need to login to upload!</h3>) 
-        }
 
         <Modal
           open={open}
@@ -216,23 +211,35 @@ const App = () => {
               </SignUpForm>
             </div>
         </Modal>
+
+
         <Header user={user} setModalOpen={setModalOpen} setOpenSignIn={setOpenSignIn}/>
+
+        <Storeys>
           { 
             posts ? (
-            posts.map(
-              (post) => {
-                return (
+              posts.map(
+                (post) => {
+                  return (
                   <Post 
                     key={post.id}
+                    postId={post.id}
+                    user={user}
                     username={post.post.username} 
                     imageUrl={post.post.imageUrl}
                     caption={post.post.caption}  
-                  />
-                )
-              }
-            )) : (<div>Loading...</div>)    
+                    />
+                    )
+                  }
+                  )) : (<div>Loading...</div>)    
           }
+        </ Storeys>
 
+        {
+          user && user.displayName ?
+            (<ImageUpload username={user.displayName}/>)
+            : (<h3>Sorry, you need to login to upload!</h3>) 
+        }
       </Container>
   );
 }
@@ -246,4 +253,14 @@ const SignUpForm = styled.form`
 
 const Container = styled.div`
   background-color: #fafafa;
+`
+
+const Storeys = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  
+  div {
+    margin-right: 20px;
+  }
 `
